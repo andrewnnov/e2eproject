@@ -9,29 +9,40 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
+import java.util.concurrent.TimeUnit;
 
 public class Base {
 
-    public void initializeDriver() throws IOException {
+    public WebDriver driver;
+
+    public WebDriver initializeDriver() throws IOException {
+
+
         Properties prop = new Properties();
         FileInputStream file = new FileInputStream("C:\\Projects\\e2eproject\\src\\main\\java\\Academy\\data.properties");
         prop.load(file);
         String browserName = prop.getProperty("browser");
+        System.out.println(browserName);
 
-        if(browserName == "chrome") {
+        if(browserName.equals("chrome")) {
             System.setProperty("webdriver.chrome.driver", "C:\\Projects\\e2eproject\\driver\\chromedriver.exe");
-            WebDriver driver = new ChromeDriver();
+            driver = new ChromeDriver();
 
-        }else if (browserName == "firefox") {
+        }else if (browserName.equals("firefox")) {
             System.setProperty("webdriver.firefox.driver", "C:\\Projects\\e2eproject\\driver\\geckodriver.exe");
-            WebDriver driver = new FirefoxDriver();
+            driver = new FirefoxDriver();
 
-        } else if(browserName == "Edge") {
+        } else if(browserName.equals("Edge")) {
             System.setProperty("webdriver.edge.driver", "C:\\Projects\\e2eproject\\driver\\msedgedriver.exe");
-            WebDriver driver = new EdgeDriver();
-
+            driver = new EdgeDriver();
         }
+
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
+        return driver;
     }
+
+
 
 
 }
