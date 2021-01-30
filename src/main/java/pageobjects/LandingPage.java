@@ -10,6 +10,7 @@ public class LandingPage {
     By signIn = By.xpath("//span[text()='Login']");
 
     By title = By.xpath("//div[@class='text-center']/h2");
+    By titleMenu = By.xpath("//a[text()='Contact']");
 
     public LandingPage(WebDriver driver) {
         this.driver = driver;
@@ -21,6 +22,10 @@ public class LandingPage {
 
     public WebElement getTitle() {
         return driver.findElement(title);
+    }
+
+    public WebElement getTitleMenu() {
+        return driver.findElement(titleMenu);
     }
 
 
