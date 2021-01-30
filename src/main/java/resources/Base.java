@@ -1,4 +1,4 @@
-package Academy;
+package resources;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -19,7 +19,7 @@ public class Base {
 
 
         Properties prop = new Properties();
-        FileInputStream file = new FileInputStream("C:\\Projects\\e2eproject\\src\\main\\java\\Academy\\data.properties");
+        FileInputStream file = new FileInputStream("C:\\Projects\\e2eproject\\src\\main\\java\\resources\\data.properties");
         prop.load(file);
         String browserName = prop.getProperty("browser");
         System.out.println(browserName);

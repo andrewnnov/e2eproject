@@ -1,8 +1,9 @@
 package Academy;
 
 
-import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Test;
+import pageobjects.LandingPage;
+import resources.Base;
 
 import java.io.IOException;
 
@@ -12,7 +13,10 @@ public class HomePage extends Base {
     public void basePageNavigation() throws IOException {
 
        driver = initializeDriver();
-       driver.get("https://www.google.com/imghp?hl=EN");
+       driver.get("http://www.qaclickacademy.com");
+
+        LandingPage landingPage = new LandingPage(driver);
+        landingPage.getLogin().click();
 
     }
 }
