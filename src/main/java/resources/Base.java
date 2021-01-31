@@ -18,7 +18,6 @@ public class Base {
 
     public WebDriver initializeDriver() throws IOException {
 
-
         prop = new Properties();
         FileInputStream file = new FileInputStream("C:\\Projects\\e2eproject\\src\\main\\java\\resources\\data.properties");
         prop.load(file);

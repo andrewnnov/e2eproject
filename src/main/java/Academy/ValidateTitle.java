@@ -1,6 +1,8 @@
 package Academy;
 
 import org.testng.Assert;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import pageobjects.LandingPage;
 import pageobjects.LoginPage;
@@ -10,18 +12,21 @@ import java.io.IOException;
 
 public class ValidateTitle extends Base {
 
+    @BeforeTest
+    public void initialize() throws IOException {
+        driver = initializeDriver();
+        driver.get(prop.getProperty("url"));
+    }
+
     @Test
     private void basePageNavigation() throws IOException {
 
-        driver = initializeDriver();
-        driver.get(prop.getProperty("url"));
-
         LandingPage landingPage = new LandingPage(driver);
         Assert.assertEquals(landingPage.getTitle().getText(), "FEATURED COURSES");
+    }
 
-
-
-
-
+    @AfterTest
+    public void closeBrowser() {
+        driver.close();
     }
 }

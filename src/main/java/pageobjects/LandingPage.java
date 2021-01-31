@@ -8,6 +8,7 @@ public class LandingPage {
 
     public WebDriver driver;
     By signIn = By.xpath("//span[text()='Login']");
+    //By signIn = By.xpath("//i[@class='fa fa-lock fa-lg']");
 
     By title = By.xpath("//div[@class='text-center']/h2");
     By titleMenu = By.xpath("//a[text()='Contact']");
