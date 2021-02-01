@@ -1,6 +1,8 @@
 package Academy;
 
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
@@ -12,6 +14,8 @@ import resources.Base;
 import java.io.IOException;
 
 public class HomePage extends Base {
+
+    public static Logger log = LogManager.getLogger(Base.class.getName());
 
     @BeforeTest
     public void initialize() throws IOException {
@@ -30,7 +34,7 @@ public class HomePage extends Base {
         loginPage.getEmailAddress().sendKeys(userName);
         loginPage.getUserPassword().sendKeys(password);
         loginPage.getLoginBtn().click();
-        System.out.println(text);
+        log.info(text);
     }
 
     @AfterTest
