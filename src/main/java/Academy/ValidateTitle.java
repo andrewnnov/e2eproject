@@ -31,7 +31,7 @@ public class ValidateTitle extends Base {
     private void basePageNavigation() throws IOException {
 
         LandingPage landingPage = new LandingPage(driver);
-        Assert.assertEquals(landingPage.getTitle().getText(), "FEATURED COURSES");
+        Assert.assertEquals(landingPage.getTitle().getText(), "FEATURED COURSES123");
         log.info("Successfully validated text message");
     }
 
