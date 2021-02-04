@@ -1,5 +1,6 @@
 package Academy;
 
+import org.openqa.selenium.WebDriver;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
@@ -18,10 +19,20 @@ public class Listeners extends Base implements ITestListener {
 
     @Override
     public void onTestFailure(ITestResult result) {
+        WebDriver driver = null;
 
         //screenshot
         String testMethodName = result.getMethod().getMethodName();
-        getScreenShotPath(testMethodName);
+
+
+        try {
+            driver = (WebDriver)result.getTestClass().getRealClass().getDeclaredField("driver").get(result.getInstance());
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (NoSuchFieldException e) {
+            e.printStackTrace();
+        }
+        getScreenShotPath(testMethodName, driver);
 
     }
 

@@ -47,7 +47,7 @@ public class Base {
         return driver;
     }
 
-    public void getScreenShotPath(String testCaseName) {
+    public void getScreenShotPath(String testCaseName, WebDriver driver) {
         TakesScreenshot takesScreenshot = (TakesScreenshot)driver;
         File source = takesScreenshot.getScreenshotAs(OutputType.FILE);
         String destinationFile = System.getProperty("user.dir") + "\\reports\\" + testCaseName + ".png";
